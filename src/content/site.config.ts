@@ -399,10 +399,10 @@ export const SITE_PRESETS: Record<string, SiteConfig> = {
   // ── 6 ──────────────────────────────────────────────────────
   "export-to-japan": {
     domain: "export-to-japan.neoidigital.com",
-    siteName: "Export to Japan",
-    brandLine: "A practical guide to exporting from Malaysia to Japan.",
+    siteName: "NeoiDigital",
+    brandLine: "Export to Japan (Malaysia Focus)",
     primaryIntent:
-      "We help Malaysian exporters understand requirements, select the right channel, and execute their first Japan export with reduced risk.",
+      "Structured guidance and execution support for companies exporting from Malaysia to Japan, covering compliance, labeling, and distributor readiness.",
     mainKeywords: [
       "export from malaysia to japan",
       "export to japan from malaysia",
@@ -423,46 +423,62 @@ export const SITE_PRESETS: Record<string, SiteConfig> = {
       "export readiness assessment for japan market",
     ],
     primaryCTA: {
-      label: "Request Export Readiness Assessment",
-      href: "https://www.japan-market.neoidigital.com/contact",
+      label: "Request export readiness review",
+      href: "https://www.japan-market.neoidigital.com/",
     },
     hubLink: HUB_LINK,
     company: "NeoiDigital",
     localPresence: true,
     socialProofBullets: [
-      "End-to-end export process guidance — from readiness to first shipment",
-      "Japan import regulation guidance by product category",
-      "Malaysia–Japan EPA tariff framework application support",
-      "Labelling and compliance checklist for Japan market",
-      "Japan-based coordinator for importer coordination",
+      "Export compliance review before distributor outreach.",
+      "Labeling and documentation gap checks aligned to Japan buyer expectations.",
+      "FTA utilisation assessment for tariff positioning.",
+      "Channel fit review before market spending.",
+      "Osaka-based coordination for follow-up and clarification.",
     ],
     faq: [
       {
-        question: "What are the basic requirements to export from Malaysia to Japan?",
+        question: "What are the key steps to export from Malaysia to Japan?",
         answer:
-          "You need a licensed exporter registration in Malaysia, compliant product labelling in Japanese, a Japanese importer of record, and any category-specific certifications (e.g. food safety, halal if applicable).",
+          "The key steps are product classification and HS code verification, regulatory review, label adaptation to Japanese language and standards, documentation alignment, FTA utilisation assessment, distributor and channel readiness confirmation, and shipment planning. Each stage must be completed in order.",
       },
       {
-        question: "How does the Malaysia–Japan EPA reduce tariffs?",
+        question: "What documents are required for Japan import?",
         answer:
-          "The EPA provides preferential tariff rates for qualifying goods with Malaysian origin. You need a Certificate of Origin (Form MJEPA) from MITI or an approved issuing body.",
+          "Core documents include a commercial invoice, packing list, bill of lading or airway bill, and certificate of origin. Category-specific requirements apply — food products require import notifications, and regulated items may need pre-approval from Japanese authorities.",
       },
       {
-        question: "What labelling is required for food products sold in Japan?",
+        question: "How does labeling compliance work for Japan?",
         answer:
-          "Japanese Food Labelling Standards require ingredient lists, allergen declarations, best-before dates, and net weight — all in Japanese. We help prepare compliant label briefs.",
+          "Japan's Food Labelling Standards Act requires ingredient lists, allergen declarations, best-before dates, and net weight, all printed in Japanese. Non-compliant labeling will not clear customs or be accepted by distributors.",
       },
       {
-        question: "Do I need to visit Japan to start exporting?",
+        question: "Does Malaysia–Japan FTA reduce tariffs?",
         answer:
-          "Not immediately. Initial distributor or importer identification, product review, and documentation preparation can be managed remotely with our Japan-side coordination.",
+          "The Malaysia–Japan EPA provides preferential tariff rates for goods meeting rules of origin requirements. A Certificate of Origin (Form MJEPA) must be issued by MITI or an approved body. Products that do not satisfy origin criteria are subject to standard MFN tariff rates.",
       },
       {
-        question: "What is an export readiness assessment?",
+        question: "How do halal products enter Japanese supermarkets?",
         answer:
-          "It is a structured review of your product's commercial viability in Japan — pricing, certifications, labelling gap analysis, and channel fit — before committing to distributor search or trade show participation.",
+          "Halal products typically enter Japan through specialist distributors serving Muslim communities, halal food retailers, or targeted food service channels. Mainstream supermarket placement requires distributor introduction, category buyer approval, and Japanese-language labeling compliance. JAKIM certification is recognised by some distributors; others require Japan-based body certification.",
+      },
+      {
+        question: "What are common export compliance mistakes?",
+        answer:
+          "The most common issues are incorrect or missing Japanese-language labeling, HS misclassification, failure to confirm an importer of record before shipment, incorrect FTA certificate application, and missing category-specific certifications. Each mistake can delay clearance or result in product rejection.",
+      },
+      {
+        question: "How long does the export preparation process take?",
+        answer:
+          "Preparation typically takes 2–4 months from initial readiness review to first shipment, depending on labeling gap size, regulatory complexity, and whether a distributor is already identified. Product categories requiring pre-approval from Japanese authorities extend this timeline.",
+      },
+      {
+        question: "What is included in an export readiness assessment?",
+        answer:
+          "An export readiness assessment covers product classification, regulatory and labeling gap analysis, FTA eligibility check, pricing viability at Japan wholesale or retail levels, certification review, and channel fit assessment. The output is a structured report identifying gaps and recommended next actions.",
       },
     ],
+    noindex: false,
   },
 
   // ── 7 ──────────────────────────────────────────────────────
