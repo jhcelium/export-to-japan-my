@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import { siteConfig } from "../content/site.config";
+import { definedTermSetJsonLd } from "../lib/seo";
 
 const WHAT_SUPPORT_COVERS = [
   {
@@ -41,6 +42,18 @@ const DELIVERABLES = [
   },
 ];
 
+const ABOUT_TERMS = [
+  { term: "Regulatory Fit", description: "Assessment of whether a product meets Japan's import regulations by category, including food safety, cosmetics, and industrial standards." },
+  { term: "Labelling Compliance", description: "Verification that product labels meet Japanese law — ingredient lists, allergen callouts, best-before dates, and net weight, all in Japanese." },
+  { term: "Channel Fit", description: "Matching the product to the correct Japan distribution path: direct importer, category distributor, or retail buyer introduction." },
+  { term: "Export Readiness Assessment", description: "A structured pre-export review covering regulatory, pricing, certification, labelling, and distributor-readiness gaps." },
+];
+
+const aboutTermsSchema = definedTermSetJsonLd(
+  "Export Support Terminology",
+  ABOUT_TERMS,
+);
+
 export default function About() {
   const title = "About — Export Support from Malaysia to Japan | NeoiDigital";
   const description =
@@ -48,7 +61,12 @@ export default function About() {
 
   return (
     <>
-      <SEOHead path="/about" title={title} description={description} />
+      <SEOHead
+        path="/about"
+        title={title}
+        description={description}
+        extraJsonLd={[aboutTermsSchema]}
+      />
 
       <main className="max-w-5xl mx-auto px-6 py-16 space-y-16">
 
@@ -60,7 +78,7 @@ export default function About() {
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
             Export Support from Malaysia to Japan
           </h1>
-          <p className="text-base text-neutral-600 leading-relaxed">
+          <p data-speakable="lead" className="text-base text-neutral-600 leading-relaxed">
             {siteConfig.primaryIntent}
           </p>
         </section>

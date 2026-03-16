@@ -3,12 +3,6 @@ import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import { siteConfig } from "../content/site.config";
 
-// Group FAQ items by index from siteConfig.faq (8 questions total):
-// 0 — key steps, 1 — documents, 6 — timeline, 7 — readiness assessment
-// 2 — labelling compliance, 5 — common mistakes
-// 4 — halal supermarkets
-// 3 — FTA tariffs
-
 const GROUP_EXPORT_PROCESS = [0, 1, 6, 7];
 const GROUP_COMPLIANCE = [2, 5];
 const GROUP_HALAL = [4];
@@ -55,7 +49,7 @@ export default function FAQ() {
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
             Export to Japan: Frequently Asked Questions
           </h1>
-          <p className="text-base text-neutral-600 leading-relaxed mb-4">
+          <p data-speakable="lead" className="text-base text-neutral-600 leading-relaxed mb-4">
             Common questions about exporting from Malaysia to Japan — covering
             export requirements, compliance and labelling, halal product
             considerations, and FTA tariff utilisation.
