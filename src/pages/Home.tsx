@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import { siteConfig } from "../content/site.config";
-import { pageTitle } from "../lib/seo";
 
 const HOME_FAQ_JSONLD = {
   "@context": "https://schema.org",
@@ -13,23 +13,23 @@ const HOME_FAQ_JSONLD = {
       name: "What are the key steps to export from Malaysia to Japan?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The key steps are product classification and HS code verification, regulatory review, label adaptation to Japanese language and standards, documentation alignment, FTA utilisation assessment, distributor and channel readiness confirmation, and shipment planning.",
+        text: "The key steps to export from Malaysia to Japan are: (1) product classification and HS code verification, (2) regulatory review by product category, (3) label adaptation to Japanese language standards, (4) documentation alignment including commercial invoice, packing list, and certificate of origin, (5) FTA utilisation assessment under the Malaysia–Japan EPA, (6) distributor and importer of record readiness confirmation, and (7) shipment planning. Each stage must be completed in order to avoid customs delays or distributor rejection.",
       },
     },
     {
       "@type": "Question",
-      name: "How does labeling compliance work for Japan?",
+      name: "What are the export compliance and labelling requirements for the Japan market?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Japan's Food Labelling Standards Act requires ingredient lists, allergen declarations, best-before dates, and net weight, all printed in Japanese. Non-compliant labeling will not clear customs or be accepted by distributors.",
+        text: "Export compliance and labelling for the Japan market requires all consumer product labels to be in Japanese. For food products, the Food Labelling Standards Act mandates ingredient lists, allergen declarations, best-before dates, and net weight in Japanese. Non-compliant labelling will be rejected at customs or by the distributor. Health and supplement products face additional scrutiny on ingredient claims. Documentation accuracy — including certificates of origin and import notifications — must be confirmed before shipment.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Malaysia–Japan FTA reduce tariffs?",
+      name: "Does the Malaysia–Japan FTA reduce tariffs for Malaysian exporters?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The Malaysia–Japan EPA provides preferential tariff rates for goods meeting rules of origin requirements. A Certificate of Origin (Form MJEPA) must be issued by MITI or an approved body. Products that do not satisfy origin criteria are subject to standard MFN tariff rates.",
+        text: "The Malaysia–Japan Economic Partnership Agreement (MJEPA) provides preferential tariff rates for qualifying Malaysian-origin goods. Exporters must hold a Certificate of Origin (Form MJEPA) issued by MITI or an approved body and satisfy rules of origin criteria. FTA benefits do not apply automatically — products that partially source inputs from third countries may not qualify. Tariffs can still apply for specific commodity codes. Confirming eligibility before pricing distributor proposals is essential.",
       },
     },
   ],
@@ -104,8 +104,9 @@ const FAILURE_PATTERNS = [
 const FAQ_PREVIEW = siteConfig.faq.filter((_, i) => [0, 2, 3].includes(i));
 
 export default function Home() {
-  const title = pageTitle();
-  const description = `${siteConfig.brandLine} ${siteConfig.primaryIntent}`;
+  const title = "Export from Malaysia to Japan — Compliance, Labelling & Readiness | NeoiDigital";
+  const description =
+    "Structured guide to exporting from Malaysia to Japan: compliance review, labelling requirements, FTA utilisation, and export readiness assessment. Osaka-based coordination.";
 
   return (
     <>
@@ -389,6 +390,32 @@ export default function Home() {
               </div>
             ))}
           </dl>
+        </section>
+
+        {/* Internal navigation */}
+        <section className="border-t border-neutral-200 pt-10">
+          <div className="flex flex-wrap gap-6 text-sm">
+            <Link
+              to="/faq"
+              className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
+            >
+              View all export to Japan FAQ →
+            </Link>
+            <Link
+              to="/about"
+              className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
+            >
+              About our approach →
+            </Link>
+            <a
+              href={siteConfig.hubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
+            >
+              Japan Market Hub →
+            </a>
+          </div>
         </section>
 
         {/* J — Final CTA */}

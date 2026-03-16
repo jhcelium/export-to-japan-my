@@ -1,12 +1,31 @@
+import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import { siteConfig } from "../content/site.config";
-import { pageTitle } from "../lib/seo";
+
+const WHAT_SUPPORT_COVERS = [
+  {
+    heading: "Regulatory fit",
+    body: "Confirming that your product can legally enter Japan — by category, classification, and import notification requirements — before any distributor approach or shipment is planned.",
+  },
+  {
+    heading: "Labelling compliance",
+    body: "Reviewing label content against Japan's Food Labelling Standards Act or relevant category regulations. Labels must be in Japanese and meet specific structural requirements. This is not a cosmetic step — non-compliant labels block customs clearance.",
+  },
+  {
+    heading: "Product category assessment",
+    body: "Evaluating whether your product's category, price point, and certification profile are viable in Japan's market at this stage. Some categories require longer preparation or specific certifications before distributor engagement is productive.",
+  },
+  {
+    heading: "Channel fit review",
+    body: "Identifying the right distribution path — whether direct importer, category distributor, or retail buyer introduction. Misaligned channel approaches waste time and damage credibility with the correct distribution partner.",
+  },
+];
 
 const DELIVERABLES = [
   {
     title: "Export Readiness Assessment",
-    body: "Structured review of your product's commercial fit for Japan — covering pricing, certification gaps, labelling requirements, and category timing.",
+    body: "Structured review of your product's commercial fit for Japan — covering regulatory requirements, pricing, certification gaps, labelling compliance, and category timing.",
   },
   {
     title: "Distributor Selection Report",
@@ -23,8 +42,9 @@ const DELIVERABLES = [
 ];
 
 export default function About() {
-  const title = pageTitle("About");
-  const description = `About ${siteConfig.siteName}. We help Malaysian exporters and SMEs enter the Japan B2B market through structured market entry support.`;
+  const title = "About — Export Support from Malaysia to Japan | NeoiDigital";
+  const description =
+    "NeoiDigital provides export support for companies entering Japan from Malaysia. We cover regulatory fit, labelling compliance, product category assessment, and distributor channel readiness — not only logistics.";
 
   return (
     <>
@@ -38,34 +58,73 @@ export default function About() {
             About
           </p>
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
-            {siteConfig.siteName}
+            Export Support from Malaysia to Japan
           </h1>
           <p className="text-base text-neutral-600 leading-relaxed">
             {siteConfig.primaryIntent}
           </p>
         </section>
 
+        {/* What export support actually covers */}
+        <section className="border-t border-neutral-200 pt-10">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-4">
+            What Export Support Actually Covers
+          </h2>
+          <div className="max-w-3xl space-y-4 text-sm text-neutral-600 leading-relaxed mb-8">
+            <p>
+              Export support is not the same as freight forwarding or logistics
+              coordination. A shipment can be physically delivered to Japan and
+              still fail — because the label was not compliant, the distributor
+              was not qualified, the product category required pre-approval, or
+              the importer of record was not confirmed before goods were
+              dispatched.
+            </p>
+            <p>
+              Effective export support addresses the preparation work that
+              determines whether a product can be sold in Japan, not only whether
+              it can be shipped there.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+            {WHAT_SUPPORT_COVERS.map((item) => (
+              <div key={item.heading} className="border-l-2 border-neutral-900 pl-4">
+                <h3 className="text-sm font-semibold text-neutral-900 mb-1">
+                  {item.heading}
+                </h3>
+                <p className="text-sm text-neutral-600 leading-relaxed">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Who we help */}
         <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-6">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-6">
             Who We Help
           </h2>
           <div className="max-w-2xl space-y-4 text-sm text-neutral-700 leading-relaxed">
             <p>
-              We work with Malaysian SMEs and exporters who are evaluating Japan as a target market or have already decided to enter and need structured support.
+              We work with Malaysian SMEs and exporters who are evaluating Japan
+              as a target market or have already decided to enter and need
+              structured support.
             </p>
             <p>
-              Our typical clients are manufacturers, food producers, health and wellness brands, and industrial suppliers who have a product ready for export but lack Japan-specific knowledge and local contacts.
+              Our typical clients are manufacturers, food producers, health and
+              wellness brands, and industrial suppliers who have a product ready
+              for export but lack Japan-specific knowledge and local contacts.
             </p>
             <p>
-              We also work with ASEAN-based companies seeking the Malaysia–Japan trade corridor as their first developed-market entry.
+              We also work with ASEAN-based companies seeking the Malaysia–Japan
+              trade corridor as their first developed-market entry.
             </p>
           </div>
         </section>
 
         {/* What we deliver */}
         <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-6">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-6">
             What We Deliver
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -85,19 +144,26 @@ export default function About() {
         {/* Where we operate */}
         {siteConfig.localPresence && (
           <section className="border-t border-neutral-200 pt-10">
-            <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-6">
+            <h2 className="text-xl font-semibold text-neutral-900 mb-6">
               Where We Operate
             </h2>
             <div className="max-w-2xl space-y-4 text-sm text-neutral-700 leading-relaxed">
               <p>
                 Our Japan-side coordinator is based in{" "}
-                <strong className="text-neutral-900">Osaka, Japan</strong> — a central commercial hub with direct access to Tokyo, Nagoya, and key B2B trade channels across western Japan.
+                <strong className="text-neutral-900">Osaka, Japan</strong> — a
+                central commercial hub with direct access to Tokyo, Nagoya, and
+                key B2B trade channels across western Japan.
               </p>
               <p>
-                Osaka provides practical access to Japan's distribution networks and serves as a base for meeting distributors, attending trade shows, and maintaining ongoing relationships without requiring our clients to relocate or establish a Japan entity.
+                Osaka provides practical access to Japan's distribution networks
+                and serves as a base for meeting distributors, attending trade
+                shows, and maintaining ongoing relationships without requiring
+                our clients to relocate or establish a Japan entity.
               </p>
               <p>
-                Our Malaysia-side coordination is conducted remotely, with structured reporting back to your team after each Japan-side engagement.
+                Our Malaysia-side coordination is conducted remotely, with
+                structured reporting back to your team after each Japan-side
+                engagement.
               </p>
             </div>
           </section>
@@ -105,11 +171,13 @@ export default function About() {
 
         {/* Hub link */}
         <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-4">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-4">
             Part of NeoiDigital Japan Market Hub
           </h2>
           <p className="text-sm text-neutral-600 mb-5 max-w-xl leading-relaxed">
-            This site is part of a broader set of Japan market entry resources for Malaysian companies. The hub aggregates tools, guides, and consulting pathways across the full export journey.
+            This site is part of a broader set of Japan market entry resources
+            for Malaysian companies. The hub aggregates tools, guides, and
+            consulting pathways across the full export journey.
           </p>
           <a
             href={siteConfig.hubLink}
@@ -121,6 +189,24 @@ export default function About() {
           </a>
         </section>
 
+        {/* Internal links */}
+        <section className="border-t border-neutral-200 pt-10">
+          <div className="flex flex-wrap gap-6 text-sm">
+            <Link
+              to="/"
+              className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
+            >
+              ← Export to Japan overview
+            </Link>
+            <Link
+              to="/faq"
+              className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
+            >
+              Common export questions →
+            </Link>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="border-t border-neutral-200 pt-10">
           <div className="max-w-xl">
@@ -128,7 +214,8 @@ export default function About() {
               Start with a direct conversation.
             </h2>
             <p className="text-sm text-neutral-500 mb-6 leading-relaxed">
-              We review your product and situation before recommending any specific service. Tell us what you are working with.
+              We review your product and situation before recommending any
+              specific service. Tell us what you are working with.
             </p>
             <CTA />
           </div>

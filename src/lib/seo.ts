@@ -9,7 +9,7 @@ export function canonicalUrl(path: string): string {
 
 /** Build full page title */
 export function pageTitle(subtitle?: string): string {
-  if (!subtitle) return siteConfig.siteName;
+  if (!subtitle) return `Export from Malaysia to Japan | ${siteConfig.siteName}`;
   return `${subtitle} | ${siteConfig.siteName}`;
 }
 
