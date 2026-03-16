@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import { siteConfig } from "../content/site.config";
+import { howToJsonLd, definedTermSetJsonLd } from "../lib/seo";
 
 const HOME_FAQ_JSONLD = {
   "@context": "https://schema.org",
@@ -33,6 +34,10 @@ const HOME_FAQ_JSONLD = {
       },
     },
   ],
+  speakableSpecification: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", "dt", "dd"],
+  },
 };
 
 const STEP_BY_STEP = [
@@ -100,8 +105,27 @@ const FAILURE_PATTERNS = [
   },
 ];
 
-// FAQ preview: key steps (0), labeling compliance (2), FTA (3)
+const EXPORT_TERMS = [
+  { term: "HS Code", description: "Harmonized System code used to classify traded products at customs. Determines applicable tariff rate and regulatory requirements." },
+  { term: "Importer of Record", description: "The licensed entity in Japan responsible for clearing imported goods through customs. Required for every shipment entering Japan." },
+  { term: "Certificate of Origin (Form MJEPA)", description: "Document issued by MITI or approved body certifying Malaysian origin for preferential tariff treatment under the Malaysia–Japan EPA." },
+  { term: "Food Labelling Standards Act", description: "Japanese law requiring ingredient lists, allergen declarations, best-before dates, and net weight on consumer food labels, all in Japanese." },
+  { term: "Malaysia–Japan EPA (MJEPA)", description: "The Malaysia–Japan Economic Partnership Agreement providing preferential tariff rates for qualifying Malaysian-origin goods exported to Japan." },
+  { term: "Rules of Origin", description: "Criteria that determine whether a product qualifies as originating from Malaysia for FTA preferential tariff treatment." },
+];
+
 const FAQ_PREVIEW = siteConfig.faq.filter((_, i) => [0, 2, 3].includes(i));
+
+const howToSchema = howToJsonLd(
+  "How to Export from Malaysia to Japan",
+  "A seven-stage export process covering product classification, regulatory review, labelling, documentation, FTA assessment, distributor readiness, and shipment planning.",
+  STEP_BY_STEP.map((s) => ({ title: s.title, body: s.body })),
+);
+
+const definedTermSchema = definedTermSetJsonLd(
+  "Export to Japan Key Terms",
+  EXPORT_TERMS,
+);
 
 export default function Home() {
   const title = "Export from Malaysia to Japan — Compliance, Labelling & Readiness | NeoiDigital";
@@ -110,7 +134,12 @@ export default function Home() {
 
   return (
     <>
-      <SEOHead path="/" title={title} description={description} />
+      <SEOHead
+        path="/"
+        title={title}
+        description={description}
+        extraJsonLd={[howToSchema, definedTermSchema]}
+      />
 
       <Helmet>
         <script type="application/ld+json">
@@ -128,7 +157,7 @@ export default function Home() {
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
             Export to Japan from Malaysia
           </h1>
-          <p className="text-sm text-neutral-600 leading-relaxed mb-8">
+          <p data-speakable="lead" className="text-sm text-neutral-600 leading-relaxed mb-8">
             NeoiDigital supports companies that export from malaysia to japan
             with structured compliance review, labeling checks, and
             distributor-ready positioning.
@@ -325,6 +354,56 @@ export default function Home() {
           </ul>
         </section>
 
+        {/* Regulatory Authority (GEO / E-E-A-T) */}
+        <section className="border-t border-neutral-200 pt-10">
+          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 mb-6">
+            Regulatory Oversight Framework
+          </h2>
+          <div className="max-w-3xl space-y-4 text-sm text-neutral-600 leading-relaxed">
+            <p>
+              On the Japan side, food and consumer product imports are overseen
+              by the <strong className="text-neutral-900">Ministry of Health, Labour and Welfare (MHLW)</strong> and
+              the <strong className="text-neutral-900">Consumer Affairs Agency (CAA)</strong>. MHLW administers the
+              Food Sanitation Act, which governs pre-import notifications, food
+              additive limits, and safety testing. CAA enforces the Food
+              Labelling Standards Act, which requires all consumer-facing labels
+              to be in Japanese with specific formatting for allergens,
+              ingredients, and nutritional information.
+            </p>
+            <p>
+              On the Malaysia side, the <strong className="text-neutral-900">Ministry of International Trade and
+              Industry (MITI)</strong> oversees export licensing and issues
+              Certificates of Origin for FTA tariff claims. The{" "}
+              <strong className="text-neutral-900">Royal Malaysian Customs Department (RMCD)</strong> handles
+              export customs declarations and HS code validation.
+            </p>
+            <p>
+              Exporters must satisfy requirements on both sides. Japan Customs
+              verifies documentation and product classification at the port of
+              entry, while MHLW quarantine stations may inspect food products
+              before release. Failure at either checkpoint delays the entire
+              shipment.
+            </p>
+          </div>
+        </section>
+
+        {/* Key Terms */}
+        <section className="border-t border-neutral-200 pt-10">
+          <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-6">
+            Key Export Terms
+          </h2>
+          <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 max-w-3xl">
+            {EXPORT_TERMS.map((t) => (
+              <div key={t.term}>
+                <dt className="text-sm font-semibold text-neutral-900">{t.term}</dt>
+                <dd className="text-xs text-neutral-500 leading-relaxed mt-0.5">
+                  {t.description}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
         {/* H — Coverage Map */}
         <section className="border-t border-neutral-200 pt-10">
           <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-2">
@@ -373,7 +452,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* I — FAQ Preview (key steps, labeling compliance, FTA) */}
+        {/* I — FAQ Preview */}
         <section className="border-t border-neutral-200 pt-10">
           <h2 className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-6">
             Common Questions
