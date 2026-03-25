@@ -164,6 +164,12 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-3">
             <CTA />
+            <Link
+              to="/faq"
+              className="inline-block border border-neutral-300 text-neutral-700 text-sm font-medium px-6 py-3 hover:border-neutral-600 hover:text-neutral-900"
+            >
+              Export FAQ hub
+            </Link>
             <a
               href={siteConfig.hubLink}
               target="_blank"

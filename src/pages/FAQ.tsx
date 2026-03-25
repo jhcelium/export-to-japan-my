@@ -2,129 +2,98 @@ import { Link } from "react-router-dom";
 import SEOHead from "../components/SEOHead";
 import CTA from "../components/CTA";
 import { siteConfig } from "../content/site.config";
+import {
+  FAQ_ANSWER_SLUGS,
+  answerPreview,
+  faqAnswerPath,
+} from "../lib/faqRoutes";
 
 const GROUP_EXPORT_PROCESS = [0, 1, 6, 7];
 const GROUP_COMPLIANCE = [2, 5];
 const GROUP_HALAL = [4];
 const GROUP_FTA = [3];
 
-function FAQGroup({ indices }: { indices: number[] }) {
+function FaqHubCard({ index }: { index: number }) {
+  const item = siteConfig.faq[index];
+  const slug = FAQ_ANSWER_SLUGS[index];
+  if (!item || !slug) return null;
+  const preview = answerPreview(item.answer, 200);
   return (
-    <dl className="divide-y divide-neutral-200">
-      {indices.map((i) => {
-        const item = siteConfig.faq[i];
-        if (!item) return null;
-        return (
-          <div key={item.question} className="py-6">
-            <dt className="text-sm font-semibold text-neutral-900 mb-2">
-              {item.question}
-            </dt>
-            <dd className="text-sm text-neutral-600 leading-relaxed">
-              {item.answer}
-            </dd>
-          </div>
-        );
-      })}
-    </dl>
+    <li className="border border-neutral-200 p-5">
+      <h3 className="text-sm font-semibold text-neutral-900 mb-2 leading-snug">
+        <Link
+          to={faqAnswerPath(slug)}
+          className="hover:underline underline-offset-2"
+        >
+          {item.question}
+        </Link>
+      </h3>
+      <p className="text-xs text-neutral-500 leading-relaxed mb-3">{preview}</p>
+      <Link
+        to={faqAnswerPath(slug)}
+        className="text-xs font-medium text-neutral-700 hover:text-neutral-900"
+      >
+        Read full answer →
+      </Link>
+    </li>
+  );
+}
+
+function FaqHubGroup({
+  title,
+  intro,
+  indices,
+}: {
+  title: string;
+  intro: string;
+  indices: number[];
+}) {
+  return (
+    <section className="border-t border-neutral-200 pt-10">
+      <h2 className="text-xl font-semibold text-neutral-900 mb-2">{title}</h2>
+      <p className="text-sm text-neutral-500 mb-6 leading-relaxed max-w-2xl">
+        {intro}
+      </p>
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {indices.map((i) => (
+          <FaqHubCard key={FAQ_ANSWER_SLUGS[i]} index={i} />
+        ))}
+      </ul>
+    </section>
   );
 }
 
 export default function FAQ() {
   const title =
-    "Malaysia to Japan Export FAQ — Requirements, Compliance & FTA | NeoiDigital";
+    "Export to Japan FAQ Hub — Malaysia Export, Compliance & Readiness | NeoiDigital";
   const description =
-    "Answers to common questions about exporting from Malaysia to Japan: import requirements, labelling compliance, halal product considerations, and FTA tariff utilisation.";
+    "Practical FAQ hub for exporting from Malaysia to Japan: import documents, labelling, FTA tariffs, halal retail, compliance gaps, timelines, and export readiness — with full answer pages for each topic.";
 
   return (
     <>
       <SEOHead path="/faq" title={title} description={description} isFaq={true} />
 
-      <main className="max-w-5xl mx-auto px-6 py-16 space-y-16">
+      <main className="max-w-5xl mx-auto px-6 py-16 space-y-12">
 
-        {/* Page header */}
-        <section className="max-w-2xl">
+        <section className="max-w-3xl">
           <p className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-4">
-            FAQ
+            FAQ hub
           </p>
           <h1 className="text-3xl font-semibold text-neutral-900 leading-tight mb-4">
-            Export to Japan: Frequently Asked Questions
+            Malaysia → Japan export questions
           </h1>
           <p data-speakable="lead" className="text-base text-neutral-600 leading-relaxed mb-4">
-            Common questions about exporting from Malaysia to Japan — covering
-            export requirements, compliance and labelling, halal product
-            considerations, and FTA tariff utilisation.
+            This hub answers practical questions on the export process,
+            compliance and labelling for Japan, tariff positioning under the
+            Malaysia–Japan agreement, and export readiness — each topic opens as
+            a dedicated answer page you can share or bookmark.
           </p>
-          <Link
-            to="/"
-            className="text-sm text-neutral-500 underline underline-offset-2 hover:text-neutral-900"
-          >
-            ← Back to export overview
-          </Link>
-        </section>
-
-        {/* Group 1: Export Requirements & Process */}
-        <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xl font-semibold text-neutral-900 mb-2">
-            Export Requirements & Process
-          </h2>
-          <p className="text-sm text-neutral-500 mb-6 leading-relaxed max-w-2xl">
-            Steps, documents, timelines, and readiness assessment for companies
-            exporting from Malaysia to Japan.
-          </p>
-          <FAQGroup indices={GROUP_EXPORT_PROCESS} />
-        </section>
-
-        {/* Group 2: Compliance & Labelling */}
-        <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xl font-semibold text-neutral-900 mb-2">
-            Compliance & Labelling
-          </h2>
-          <p className="text-sm text-neutral-500 mb-6 leading-relaxed max-w-2xl">
-            Japan's labelling standards and the most common compliance gaps that
-            delay clearance or distributor acceptance.
-          </p>
-          <FAQGroup indices={GROUP_COMPLIANCE} />
-        </section>
-
-        {/* Group 3: Halal Products */}
-        <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xl font-semibold text-neutral-900 mb-2">
-            Halal Products and Supermarket Entry
-          </h2>
-          <p className="text-sm text-neutral-500 mb-6 leading-relaxed max-w-2xl">
-            How halal-certified Malaysian products enter Japan's retail and
-            specialist channels, and what certification recognition looks like
-            in practice.
-          </p>
-          <FAQGroup indices={GROUP_HALAL} />
-        </section>
-
-        {/* Group 4: FTA & Tariff */}
-        <section className="border-t border-neutral-200 pt-10">
-          <h2 className="text-xl font-semibold text-neutral-900 mb-2">
-            FTA & Tariff Considerations
-          </h2>
-          <p className="text-sm text-neutral-500 mb-6 leading-relaxed max-w-2xl">
-            How the Malaysia–Japan Economic Partnership Agreement affects tariffs,
-            what qualifies, and where assumptions about FTA savings create risk.
-          </p>
-          <FAQGroup indices={GROUP_FTA} />
-        </section>
-
-        {/* Internal links */}
-        <section className="border-t border-neutral-200 pt-10">
-          <div className="flex flex-wrap gap-6 text-sm">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <Link
               to="/"
               className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
             >
-              ← Export to Japan overview
-            </Link>
-            <Link
-              to="/about"
-              className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
-            >
-              About our approach →
+              ← Home — export overview
             </Link>
             <a
               href={siteConfig.hubLink}
@@ -132,25 +101,47 @@ export default function FAQ() {
               rel="noopener noreferrer"
               className="text-neutral-700 underline underline-offset-2 hover:text-neutral-900"
             >
-              Japan Market Hub →
+              NeoiDigital Japan Market Hub →
             </a>
           </div>
         </section>
 
-        {/* CTA */}
+        <FaqHubGroup
+          title="Export process & readiness"
+          intro="Steps, paperwork, how long preparation takes, and what a readiness assessment covers."
+          indices={GROUP_EXPORT_PROCESS}
+        />
+
+        <FaqHubGroup
+          title="Compliance & labelling"
+          intro="Japan label rules and frequent compliance mistakes that block clearance or distributor acceptance."
+          indices={GROUP_COMPLIANCE}
+        />
+
+        <FaqHubGroup
+          title="Halal & retail channels"
+          intro="How halal products from Malaysia reach Japanese supermarkets and specialist channels."
+          indices={GROUP_HALAL}
+        />
+
+        <FaqHubGroup
+          title="FTA & tariffs"
+          intro="When preferential tariffs apply, certificates, and common misconceptions — general guidance, not legal advice."
+          indices={GROUP_FTA}
+        />
+
         <section className="border-t border-neutral-200 pt-10">
           <div className="max-w-xl">
-            <h2 className="text-xl font-semibold text-neutral-900 mb-3">
-              Have a question not answered here?
+            <h2 className="text-lg font-semibold text-neutral-900 mb-2">
+              Next step
             </h2>
-            <p className="text-sm text-neutral-500 mb-6 leading-relaxed">
-              Reach out directly. We respond to all enquiries within one business
-              day.
+            <p className="text-sm text-neutral-500 mb-5 leading-relaxed">
+              If your situation is not covered here, use the hub for qualification
+              or request a short export readiness conversation.
             </p>
             <CTA />
           </div>
         </section>
-
       </main>
     </>
   );

@@ -115,6 +115,25 @@ export function faqPageJsonLd() {
   };
 }
 
+/** One Q&A — for /faq/:slug answer assets */
+export function singleFaqPageJsonLd(question: string, answer: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: answer,
+        },
+      },
+    ],
+    speakableSpecification: speakable(["h1", "[data-speakable='answer']"]),
+  };
+}
+
 export function howToJsonLd(
   name: string,
   description: string,
