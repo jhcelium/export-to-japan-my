@@ -96,6 +96,17 @@ for (let i = 0; i < FAQ_ANSWER_SLUGS.length; i++) {
   lines.push("  </url>");
 }
 
+if (activeKey === "export-to-japan") {
+  lines.push("  <url>");
+  lines.push(
+    "    <loc>" + baseUrl + "/faq/how-do-i-export-from-malaysia-to-japan</loc>",
+  );
+  lines.push("    <lastmod>" + today + "</lastmod>");
+  lines.push("    <changefreq>monthly</changefreq>");
+  lines.push("    <priority>0.75</priority>");
+  lines.push("  </url>");
+}
+
 lines.push("</urlset>");
 lines.push("");
 

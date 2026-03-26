@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import FaqAnswer from "./pages/FaqAnswer";
+import FaqHowExportMalaysiaJapan from "./pages/FaqHowExportMalaysiaJapan";
 
 export default function App() {
   return (
@@ -18,6 +19,10 @@ export default function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route
+                path="/faq/how-do-i-export-from-malaysia-to-japan"
+                element={<FaqHowExportMalaysiaJapan />}
+              />
               <Route path="/faq/:slug" element={<FaqAnswer />} />
             </Routes>
           </div>

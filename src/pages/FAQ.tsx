@@ -106,6 +106,40 @@ export default function FAQ() {
           </div>
         </section>
 
+        <section className="border-t border-neutral-200 pt-10">
+          <h2 className="text-xl font-semibold text-neutral-900 mb-2">
+            Start here
+          </h2>
+          <p className="text-sm text-neutral-500 mb-6 leading-relaxed max-w-2xl">
+            Overview of how exporting from Malaysia to Japan fits together —
+            process, readiness, and compliance awareness (non-legal summary).
+          </p>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <li className="border border-neutral-200 p-5">
+              <h3 className="text-sm font-semibold text-neutral-900 mb-2 leading-snug">
+                <Link
+                  to="/faq/how-do-i-export-from-malaysia-to-japan"
+                  className="hover:underline underline-offset-2"
+                >
+                  How Do I Export from Malaysia to Japan?
+                </Link>
+              </h3>
+              <p className="text-xs text-neutral-500 leading-relaxed mb-3">
+                You align classification, Japan import rules for your category,
+                documentation and labelling, a confirmed importer of record, then
+                shipment — in that order. Practical orientation only, not legal
+                advice.
+              </p>
+              <Link
+                to="/faq/how-do-i-export-from-malaysia-to-japan"
+                className="text-xs font-medium text-neutral-700 hover:text-neutral-900"
+              >
+                Read full answer →
+              </Link>
+            </li>
+          </ul>
+        </section>
+
         <FaqHubGroup
           title="Export process & readiness"
           intro="Steps, paperwork, how long preparation takes, and what a readiness assessment covers."
